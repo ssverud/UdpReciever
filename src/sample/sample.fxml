@@ -1,25 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.canvas.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
-   <top>
-      <FlowPane BorderPane.alignment="CENTER">
-         <children>
-            <Label text="Stimulator">
-               <font>
-                  <Font size="24.0" />
-               </font>
-            </Label>
-         </children></FlowPane>
-   </top>
+<BorderPane xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
    <bottom>
       <ButtonBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
         <buttons>
-          <Button mnemonicParsing="false" text="Button" />
+          <Button mnemonicParsing="false" onAction="#oneButton" text="one" />
+            <Button mnemonicParsing="false" onAction="#twoButton" text="two" />
+            <Button mnemonicParsing="false" onAction="#threeButton" text="three" />
+            <Button mnemonicParsing="false" onAction="#fourBotton" text="four" />
         </buttons>
       </ButtonBar>
    </bottom>
+   <left>
+      <VBox prefHeight="326.0" prefWidth="206.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label text="Instructions" />
+            <TextArea prefHeight="195.0" prefWidth="245.0" text="made by:&#10;rules:&#10;&#10;" />
+            <Label text="Chat" textAlignment="CENTER" />
+            <TableView fx:id="tableView" prefHeight="159.0" prefWidth="148.0">
+              <columns>
+                <TableColumn prefWidth="75.0" text="name" />
+                <TableColumn prefWidth="75.0" text="messages" />
+              </columns>
+            </TableView>
+            <FlowPane prefHeight="50.0" prefWidth="200.0">
+               <children>
+                  <Label text="Type" />
+                  <TextField fx:id="textFieldType" prefWidth="220.0" />
+               </children>
+            </FlowPane>
+         </children></VBox>
+   </left>
+   <top>
+      <Label text="The Drone" BorderPane.alignment="CENTER">
+         <font>
+            <Font size="24.0" />
+         </font></Label>
+   </top>
+   <center>
+      <Canvas height="200.0" width="200.0" BorderPane.alignment="CENTER" />
+   </center>
 </BorderPane>
