@@ -40,10 +40,11 @@ public class Controller {
     private TextField textFieldMessage;
 
     @FXML
-    public void oneButton(ActionEvent event) {
+    void oneButton(ActionEvent event) {
         Message message = new Message(textFieldMessage.getText());
        // tableView.getItems().add(message);
         messages.add(message);
+        System.out.println(message);
     }
 
     @FXML
