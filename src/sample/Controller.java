@@ -1,4 +1,5 @@
 package sample;
+import javafx.beans.Observable;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -14,11 +15,18 @@ import javafx.scene.layout.VBox;
 
 public class Controller {
 
+    ObservableList<Message> messages = FXCollections.observableArrayList();
+
     public void initialize() {
         System.out.println("Kører");
 
+        tableView.setItems(messages);
+
+
         UdpReciever udpReciever = new UdpReciever();
         new Thread(udpReciever).start();
+
+
 
     }
 
@@ -29,13 +37,13 @@ public class Controller {
     private TableView<Message> tableView;
 
     @FXML
-    private TextField textFieldType;
+    private TextField textFieldMessage;
 
     @FXML
     public void oneButton(ActionEvent event) {
-        Message message = new Message(textFieldType.getText());
-        tableView.getItems().add(message);
-        //drinks.add(drink);
+        Message message = new Message(textFieldMessage.getText());
+       // tableView.getItems().add(message);
+        messages.add(message);
     }
 
     @FXML
