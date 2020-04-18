@@ -21,6 +21,7 @@ public class Controller {
         System.out.println("Kører");
 
         tableView.setItems(messages);
+        System.out.println(messages);
 
 
         UdpReciever udpReciever = new UdpReciever();
@@ -29,9 +30,6 @@ public class Controller {
 
 
     }
-
-    @FXML
-    VBox vbox;
 
     @FXML
     private TableView<Message> tableView;
@@ -44,6 +42,7 @@ public class Controller {
         Message message = new Message(textFieldMessage.getText());
        // tableView.getItems().add(message);
         messages.add(message);
+        System.out.println(message);
     }
 
     @FXML
