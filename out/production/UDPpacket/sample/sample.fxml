@@ -6,12 +6,12 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+<BorderPane xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
     <bottom>
         <ButtonBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
             <buttons>
-                <Button mnemonicParsing="false" onAction="#oneButton" text="one" />
-                <Button mnemonicParsing="false" onAction="#twoButton" text="two" />
+                <Button mnemonicParsing="false" onAction="#oneButton" text="Send message" />
+                <Button mnemonicParsing="false" onAction="#twoButton" text="Start" />
                 <Button mnemonicParsing="false" onAction="#threeButton" text="three" />
                 <Button mnemonicParsing="false" onAction="#fourBotton" text="four" />
             </buttons>
@@ -48,6 +48,6 @@
         </Label>
     </top>
     <center>
-        <Canvas height="299.0" width="372.0" BorderPane.alignment="CENTER" />
+        <Canvas fx:id="canvas" height="299.0" width="372.0" BorderPane.alignment="CENTER" />
     </center>
 </BorderPane>
