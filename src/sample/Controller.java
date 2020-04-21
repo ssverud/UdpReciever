@@ -18,6 +18,8 @@ import javafx.scene.canvas.GraphicsContext;
 
 public class Controller {
 
+    Controller controller;
+
     Drone drone = new Drone(50, 40);
 
     GraphicsContext graphicsContext;
@@ -49,8 +51,9 @@ public class Controller {
     }
 
 
+
     public void draw() {
-        //graphicsContext.clearRect(0, 0, 500, 500);
+        graphicsContext.clearRect(0, 0, 500, 500);
 
         double droneX = canvas.getWidth() / 2;
         double droneY = canvas.getHeight() / 2;

@@ -12,11 +12,33 @@ public class UdpReciever implements Runnable {
     private Controller controller;
 
     private DatagramSocket socket;
-
+    
     public void messageHandler(String message) {
         if(message.equals("moveup")) {
             if(drone.isActive()) {
-                drone.setY(drone.getY() + 10);
+                drone.setY(drone.getY() - 0.25);
+                controller.draw();
+            }
+        }
+
+        if(message.equals("movedown")) {
+            if(drone.isActive()) {
+                drone.setY(drone.getY() + 0.25);
+                controller.draw();
+            }
+        }
+
+        if(message.equals("moveright")) {
+            if(drone.isActive()) {
+                drone.setX(drone.getX() + 0.25);
+                controller.draw();
+            }
+        }
+
+        if(message.equals("moveleft")) {
+            if(drone.isActive()) {
+                drone.setX(drone.getX() - 0.25);
+                controller.draw();
             }
         }
 
@@ -25,8 +47,9 @@ public class UdpReciever implements Runnable {
            System.out.println("DRONE INIT");
            controller.draw();
        }
-
     }
+
+
 
     // kommer af implement Runnable
 
@@ -62,6 +85,7 @@ public class UdpReciever implements Runnable {
                 String s = new String(datagramPacket.getData(), 0, datagramPacket.getLength());
 
                 messageHandler(s);
+
 
                 // printer gemt string
                 System.out.println(s);
