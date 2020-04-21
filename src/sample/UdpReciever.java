@@ -15,7 +15,9 @@ public class UdpReciever implements Runnable {
 
     public void messageHandler(String message) {
         if(message.equals("moveup")) {
-            if(drone.setActive();)
+            if(drone.isActive()) {
+                drone.setY(drone.getY() + 10);
+            }
         }
 
         if(message.equals("init")) {
