@@ -7,6 +7,7 @@ public class Drone {
     int y;
     int length = 20;
     int width = 20;
+    private boolean active = false;
 
     public Drone(int x, int y) {
         this.x = x;
@@ -42,5 +43,13 @@ public class Drone {
                 "x=" + x +
                 ", y=" + y +
                 '}';
+    }
+
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
     }
 }

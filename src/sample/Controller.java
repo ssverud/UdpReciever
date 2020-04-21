@@ -18,7 +18,7 @@ import javafx.scene.canvas.GraphicsContext;
 
 public class Controller {
 
-    Drone drone;
+    Drone drone = new Drone(50, 40);
 
     GraphicsContext graphicsContext;
     GraphicsContext graphicsContextApple;
@@ -37,6 +37,11 @@ public class Controller {
 
 
         UdpReciever udpReciever = new UdpReciever();
+
+        udpReciever.setDrone(drone);
+
+        udpReciever.setController(this);
+
         new Thread(udpReciever).start();
 
 
@@ -44,13 +49,22 @@ public class Controller {
     }
 
 
-    private void draw(GraphicsContext graphicsContext) {
-        graphicsContext.clearRect(0, 0, 500, 500);
+    public void draw() {
+        //graphicsContext.clearRect(0, 0, 500, 500);
 
         double droneX = canvas.getWidth() / 2;
         double droneY = canvas.getHeight() / 2;
 
-        graphicsContext.fillRect(droneX, droneY, 10, 10);
+
+        if(drone.isActive()) {
+            System.out.println("Draw Drone");
+
+            drone.draw(graphicsContext);
+        }
+
+
+
+        //graphicsContext.fillRect(droneX, droneY, 10, 10);
 
         //if (event.getButton() == MouseButton.PRIMARY) {
 
@@ -79,7 +93,9 @@ public class Controller {
 
     @FXML
     public void twoButton(ActionEvent event) {
-        draw(graphicsContext);
+
+        draw();
+
     }
 
     @FXML
@@ -96,7 +112,7 @@ public class Controller {
     void mouseClickedOnCanvas(MouseEvent event) {
         if (event.getButton() == MouseButton.PRIMARY) {
 
-            draw(graphicsContext);
+            draw();
         }
 
     }
