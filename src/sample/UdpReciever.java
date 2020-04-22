@@ -19,8 +19,9 @@ public class UdpReciever implements Runnable {
     public void messageHandler(String message) {
 
 
-        if(message.equals("1")) {
+        if(message.equals("BLACK")) {
             if(drone.isActive()) {
+                drone.changeColor(Color.BLACK);
                 controller.draw();
             }
         }

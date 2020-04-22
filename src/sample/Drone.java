@@ -6,20 +6,31 @@ import javafx.scene.paint.Color;
 public class Drone {
     double x;
     double y;
-    String changeColor;
+    int r;
+    int g;
+    int b;
+    Color color = Color.BLACK;
 
     int length = 20;
     int width = 20;
     private boolean active = false;
+
 
     public Drone(double x, double y) {
         this.x = x;
         this.y = y;
     }
 
+    public void changeColor(Color color) {
+        this.color = color;
+    }
+
+
 
     public void draw(GraphicsContext graphicsContext) {
-        graphicsContext.setFill(Color.BLACK);
+
+
+        graphicsContext.setFill(color);
         graphicsContext.fillRect(x-2, y-2, 20, 20);
 
     }
@@ -58,12 +69,4 @@ public class Drone {
         this.active = active;
     }
 
-
-    public String getChangeColor() {
-        return changeColor;
-    }
-
-    public void setChangeColor(String changeColor) {
-        this.changeColor = changeColor;
-    }
 }
