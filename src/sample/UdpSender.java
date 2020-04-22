@@ -10,7 +10,7 @@ public class UdpSender {
 
     private DatagramSocket socket;
 
-    public void sendUdp() throws UnknownHostException {
+    public void sendUdp(String s) throws UnknownHostException {
 
         try {
             try {
@@ -24,9 +24,8 @@ public class UdpSender {
 
             while (true) {
 
-
-                // change the chat into bytes
-                data = "string from chat".getBytes();
+                // change the string into bytes
+                data = s.getBytes();
 
                  // Creating the datagramPacket
                 DatagramPacket datagramPacket =
