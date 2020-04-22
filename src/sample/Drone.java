@@ -6,7 +6,7 @@ import javafx.scene.paint.Color;
 public class Drone {
     double x;
     double y;
-    String colorDrone;
+    String changeColor;
 
     int length = 20;
     int width = 20;
@@ -58,11 +58,12 @@ public class Drone {
         this.active = active;
     }
 
-    public String getColorDrone() {
-        return colorDrone;
+
+    public String getChangeColor() {
+        return changeColor;
     }
 
-    public void setColorDrone(String colorDrone) {
-        this.colorDrone = colorDrone;
+    public void setChangeColor(String changeColor) {
+        this.changeColor = changeColor;
     }
 }
