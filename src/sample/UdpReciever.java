@@ -162,7 +162,7 @@ public class UdpReciever implements Runnable {
                 messageHandler(s);
 
                 // printer gemt string
-                System.out.println(s);
+                //System.out.println(s);
             } catch (IOException e) {
                 e.printStackTrace();
             }

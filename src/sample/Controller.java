@@ -14,11 +14,14 @@ import javafx.scene.layout.VBox;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 
+import java.net.UnknownHostException;
 
 
 public class Controller {
 
     Controller controller;
+
+    UdpSender udpSender = new UdpSender();
 
     Drone drone = new Drone(50, 40);
 
@@ -64,14 +67,6 @@ public class Controller {
 
             drone.draw(graphicsContext);
         }
-
-
-
-        //graphicsContext.fillRect(droneX, droneY, 10, 10);
-
-        //if (event.getButton() == MouseButton.PRIMARY) {
-
-        //}
     }
 
     @FXML
@@ -87,11 +82,12 @@ public class Controller {
     private TextField textFieldMessage;
 
     @FXML
-    void oneButton(ActionEvent event) {
+    void oneButton(ActionEvent event) throws UnknownHostException {
         Message message = new Message(textFieldMessage.getText());
         // tableView.getItems().add(message);
         messages.add(message);
         System.out.println(message);
+        udpSender.sendUdp(message);
     }
 
     @FXML

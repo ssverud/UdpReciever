@@ -10,7 +10,7 @@ public class UdpSender {
 
     private DatagramSocket socket;
 
-    public void sendUdp(String s) throws UnknownHostException {
+    public void sendUdp(Message message) throws UnknownHostException {
 
         try {
             try {
@@ -22,20 +22,21 @@ public class UdpSender {
             InetAddress ip = InetAddress.getLocalHost();
             byte data[];
 
-            while (true) {
+
+            //while (true) {
 
                 // change the string into bytes
-                data = s.getBytes();
+                data = message.getMessage().getBytes();
 
                  // Creating the datagramPacket
                 DatagramPacket datagramPacket =
-                        new DatagramPacket(data, data.length, ip, 7000);
+                        new DatagramPacket(data, data.length, ip, 7007);
 
                 // sends
                 socket.send(datagramPacket);
+            System.out.println("PACKET SENT");
 
-
-            }
+            //}
         } catch (IOException e) {
             e.printStackTrace();
         }
