@@ -1,10 +1,13 @@
 package sample;
 
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.paint.Color;
 
 public class Drone {
     double x;
     double y;
+    String colorDrone;
+
     int length = 20;
     int width = 20;
     private boolean active = false;
@@ -14,8 +17,10 @@ public class Drone {
         this.y = y;
     }
 
+
     public void draw(GraphicsContext graphicsContext) {
-        graphicsContext.strokeRect(x-2, y-2, 20, 20);
+        graphicsContext.setFill(Color.BLACK);
+        graphicsContext.fillRect(x-2, y-2, 20, 20);
 
     }
 
@@ -51,5 +56,13 @@ public class Drone {
 
     public void setActive(boolean active) {
         this.active = active;
+    }
+
+    public String getColorDrone() {
+        return colorDrone;
+    }
+
+    public void setColorDrone(String colorDrone) {
+        this.colorDrone = colorDrone;
     }
 }

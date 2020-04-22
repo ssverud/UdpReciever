@@ -1,5 +1,7 @@
 package sample;
 
+import javafx.scene.paint.Color;
+
 import java.io.IOException;
 import java.net.*;
 
@@ -12,8 +14,17 @@ public class UdpReciever implements Runnable {
     private Controller controller;
 
     private DatagramSocket socket;
-    
+
+
     public void messageHandler(String message) {
+
+
+        if(message.equals("1")) {
+            if(drone.isActive()) {
+                controller.draw();
+            }
+        }
+
         if(message.equals("moveup")) {
             if(drone.isActive()) {
                 drone.setY(drone.getY() - 0.25);
@@ -85,7 +96,6 @@ public class UdpReciever implements Runnable {
                 String s = new String(datagramPacket.getData(), 0, datagramPacket.getLength());
 
                 messageHandler(s);
-
 
                 // printer gemt string
                 System.out.println(s);
