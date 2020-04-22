@@ -26,6 +26,69 @@ public class UdpReciever implements Runnable {
             }
         }
 
+        if(message.equals("BLUE")) {
+            if(drone.isActive()) {
+                drone.changeColor(Color.BLUE);
+                controller.draw();
+            }
+        }
+
+        if(message.equals("BEIGE")) {
+            if(drone.isActive()) {
+                drone.changeColor(Color.BEIGE);
+                controller.draw();
+            }
+        }
+
+        if(message.equals("BROWN")) {
+            if(drone.isActive()) {
+                drone.changeColor(Color.BROWN);
+                controller.draw();
+            }
+        }
+
+        if(message.equals("BISQUE")) {
+            if(drone.isActive()) {
+                drone.changeColor(Color.BISQUE);
+                controller.draw();
+            }
+        }
+
+        if(message.equals("DARKGREEN")) {
+            if(drone.isActive()) {
+                drone.changeColor(Color.DARKGREEN);
+                controller.draw();
+            }
+        }
+
+        if(message.equals("DARKSALMON")) {
+            if(drone.isActive()) {
+                drone.changeColor(Color.DARKSALMON);
+                controller.draw();
+            }
+        }
+
+        if(message.equals("CORAL")) {
+            if(drone.isActive()) {
+                drone.changeColor(Color.CORAL);
+                controller.draw();
+            }
+        }
+
+        if(message.equals("BLUEVIOLET")) {
+            if(drone.isActive()) {
+                drone.changeColor(Color.BLUEVIOLET);
+                controller.draw();
+            }
+        }
+
+        if(message.equals("DARKRED")) {
+            if(drone.isActive()) {
+                drone.changeColor(Color.DARKRED);
+                controller.draw();
+            }
+        }
+
         if(message.equals("moveup")) {
             if(drone.isActive()) {
                 drone.setY(drone.getY() - 0.25);
