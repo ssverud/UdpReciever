@@ -22,23 +22,17 @@ public class UdpSender {
             InetAddress ip = InetAddress.getLocalHost();
             byte data[];
 
-            // loop while user not enters "bye"
             while (true) {
 
-
-                // convert the String input into the byte array.
+                // convert the String from chat into bytes
                 data = string from chat .getBytes();
 
-                // Step 2 : Create the datagramPacket for sending
-                // the data.
+                // Creating the datagramPacket for sending
                 DatagramPacket datagramPacket =
                         new DatagramPacket(data, data.length, ip, 7000);
 
-                // Step 3 : invoke the send call to actually send
-                // the data.
+                // sending the message
                 socket.send(datagramPacket);
-
-                // break the loop if user enters "bye"
 
             }
         } catch (IOException e) {
