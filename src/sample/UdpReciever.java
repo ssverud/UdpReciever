@@ -15,7 +15,6 @@ import javafx.scene.image.Image;
 
 public class UdpReciever implements Runnable {
 
-
     Apple apple;
 
     private Drone drone;
