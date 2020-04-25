@@ -94,6 +94,20 @@ public class Apple {
         this.active = active;
     }
 
+    @Override
+    public String toString() {
+        return "Apple{" +
+                "random=" + random +
+                ", Width=" + Width +
+                ", Height=" + Height +
+                ", canvasWidth=" + canvasWidth +
+                ", canvasHeight=" + canvasHeight +
+                ", active=" + active +
+                ", x=" + x +
+                ", y=" + y +
+                ", image=" + image +
+                '}';
+    }
 
     /*
     private Controller controller;
