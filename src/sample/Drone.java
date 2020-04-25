@@ -33,7 +33,6 @@ public class Drone {
 
         graphicsContext.setFill(color);
         graphicsContext.fillRect(x-2, y-2, 20, 20);
-
     }
 
     public double getX() {
