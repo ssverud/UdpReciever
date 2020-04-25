@@ -144,7 +144,7 @@ public class UdpReciever implements Runnable {
            drone.setActive(true);
            System.out.println("DRONE INIT");
            controller.draw();
-           controller.drawApple();
+           //controller.drawApple();
        }
     }
 

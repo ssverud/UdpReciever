@@ -56,7 +56,7 @@ public class Controller {
 
             if (apples.size() < 1) {
                 drawNewApple();
-                System.out.println(drawNewApple());
+                //System.out.println(drawNewApple());
             }
             drone.draw(getGraphicsContext());
         }
