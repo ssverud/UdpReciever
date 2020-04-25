@@ -53,30 +53,28 @@ public class Controller {
 
         if (drone.isActive()) {
             System.out.println("Draw Drone");
-
-            if (apples.size() < 1) {
-                drawNewApple();
-                //System.out.println(drawNewApple());
+            drawApple();
             }
             drone.draw(getGraphicsContext());
-        }
+
     }
 
     // delete if no use:  calculateDistanceBetweenDroneAndApple(drone.getX(),drone.getY(),)
-    public Apple drawNewApple() {
-
-        Apple apple = new Apple();
-        apple.setActive(true);
-        apples.add(apple);
+    public void drawApple() {
+        Apple apple;
+        if(apples.size() < 1) {
+            apple = new Apple();
+            apple.setActive(true);
+            apples.add(apple);
+        }
         System.out.println("Apple added ???????????????????????????????????????????????????????????");
 
-        getGraphicsContext().drawImage(apple.getImage(), apples.get(0).getX(), apples.get(0).getY(), apples.get(0).getWidth(), apples.get(0).getHeight());
+        getGraphicsContext().drawImage(apples.get(0).getImage(), apples.get(0).getX(), apples.get(0).getY(), apples.get(0).getWidth(), apples.get(0).getHeight());
         System.out.println("Apple ------------------------------------------------------------------");
-        if (calculateDistanceBetweenDroneAndApple(drone.getX(), drone.getY(), apple.getX(), apple.getY()) < 50) {
+        if (calculateDistanceBetweenDroneAndApple(drone.getX(), drone.getY(), apples.get(0).getX(), apples.get(0).getY()) < 50) {
             apples.remove(0);
             System.out.println("apple removed!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
         }
-        return apple;
     }
 
     public double calculateDistanceBetweenDroneAndApple(double x1, double y1, double x2, double y2) {
