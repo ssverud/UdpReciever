@@ -4,18 +4,17 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import javafx.scene.image.Image;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
-import java.util.Random;
 
 import java.net.UnknownHostException;
 
 
 public class Controller {
+
 
     Controller controller;
 
@@ -35,8 +34,6 @@ public class Controller {
         tableView.setItems(messages);
         System.out.println(messages);
 
-
-
         UdpReciever udpReciever = new UdpReciever();
 
         udpReciever.setDrone(drone);
@@ -44,19 +41,13 @@ public class Controller {
         udpReciever.setController(this);
 
         new Thread(udpReciever).start();
-
-
-
     }
-
-
 
     public void draw() {
         getGraphicsContext().clearRect(0, 0, 500, 500);
 
         double droneX = canvas.getWidth() / 2;
         double droneY = canvas.getHeight() / 2;
-
 
         if(drone.isActive()) {
             System.out.println("Draw Drone");

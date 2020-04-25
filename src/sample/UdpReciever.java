@@ -15,6 +15,9 @@ import javafx.scene.image.Image;
 
 public class UdpReciever implements Runnable {
 
+
+    Apple apple;
+
     private Drone drone;
 
     private Controller controller;
@@ -162,10 +165,7 @@ public class UdpReciever implements Runnable {
             e.printStackTrace();
         }
 
-
-
         while(true) {
-
             // forberede byte
             // Laver byte array til besked
             byte[] bytes = new byte[255];
@@ -188,9 +188,6 @@ public class UdpReciever implements Runnable {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-
-
-
         }
     }
 
