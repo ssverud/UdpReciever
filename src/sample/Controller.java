@@ -1,4 +1,5 @@
 package sample;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -16,7 +17,7 @@ import java.net.UnknownHostException;
 public class Controller {
 
 
-    Controller controller;
+    // måske slet test, hvis ikke problem bare slet  Controller controller;
 
     Drone drone = new Drone(50, 40);
     UdpSender udpSender = new UdpSender(drone);
@@ -24,9 +25,10 @@ public class Controller {
     private GraphicsContext graphicsContext;
 
     ObservableList<Message> messages = FXCollections.observableArrayList();
+    ObservableList<Apple> apples = FXCollections.observableArrayList();
 
-    public void initialize()
-    {
+
+    public void initialize() {
         setGraphicsContext(canvas.getGraphicsContext2D());
 
         System.out.println("Kører");
@@ -46,15 +48,32 @@ public class Controller {
     public void draw() {
         getGraphicsContext().clearRect(0, 0, 500, 500);
 
-        double droneX = canvas.getWidth() / 2;
-        double droneY = canvas.getHeight() / 2;
+        // test if irrelevant, delete if no problems - double droneX = canvas.getWidth() / 2;
+        // test if irrelevant, delete if no problems - double droneY = canvas.getHeight() / 2;
 
-        if(drone.isActive()) {
+        if (drone.isActive()) {
             System.out.println("Draw Drone");
-
             drone.draw(getGraphicsContext());
+            Apple apple = new Apple();
+            graphicsContext.drawImage(apple.getImage(), apple.getX(),apple.getY(), apple.getWidth(), apple.getHeight());
+            // if (calculateDistanceBetweenDroneAndApple(drone.getX(), drone.getY(), )
 
         }
+    }
+
+    // delete if no use:  calculateDistanceBetweenDroneAndApple(drone.getX(),drone.getY(),)
+    public void drawApple() {
+        if (apples.size() < 1) {
+           Apple apple = new Apple();
+            apples.add(apple);
+            graphicsContext.drawImage(apple.getImage(), apple.getX(), apple.getY(), apple.getWidth(), apple.getHeight());
+        }
+    }
+
+    public double calculateDistanceBetweenDroneAndApple(double x1, double y1, double x2, double y2) {
+        double ac = Math.abs(y2 - y1);
+        double cb = Math.abs(x2 - x1);
+        return Math.hypot(ac, cb);
     }
 
     @FXML
