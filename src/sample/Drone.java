@@ -17,7 +17,7 @@ public class Drone {
     private boolean active = false;
     private String IP;
 
-    private Image image = new Image("apple.png");
+    private Image image = new Image("Dronepic.png");
 
 
     public Drone(double x, double y) {
