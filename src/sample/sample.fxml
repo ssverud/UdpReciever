@@ -48,6 +48,6 @@
         </Label>
     </top>
     <center>
-        <Canvas fx:id="canvas" height="299.0" width="372.0" BorderPane.alignment="CENTER" />
+        <Canvas fx:id="canvas" height="327.0" width="372.0" BorderPane.alignment="CENTER" />
     </center>
 </BorderPane>

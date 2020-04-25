@@ -1,18 +1,16 @@
 package sample;
-import javafx.beans.Observable;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
-import sample.Drone;
-import javafx.scene.layout.VBox;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import java.util.Random;
 
 import java.net.UnknownHostException;
 
@@ -21,24 +19,22 @@ public class Controller {
 
     Controller controller;
 
-    UdpSender udpSender = new UdpSender();
-
     Drone drone = new Drone(50, 40);
+    UdpSender udpSender = new UdpSender(drone);
 
-    GraphicsContext graphicsContext;
-    GraphicsContext graphicsContextApple;
-
+    private GraphicsContext graphicsContext;
 
     ObservableList<Message> messages = FXCollections.observableArrayList();
 
     public void initialize()
     {
-        graphicsContext = canvas.getGraphicsContext2D();
+        setGraphicsContext(canvas.getGraphicsContext2D());
 
         System.out.println("Kører");
 
         tableView.setItems(messages);
         System.out.println(messages);
+
 
 
         UdpReciever udpReciever = new UdpReciever();
@@ -56,7 +52,7 @@ public class Controller {
 
 
     public void draw() {
-        graphicsContext.clearRect(0, 0, 500, 500);
+        getGraphicsContext().clearRect(0, 0, 500, 500);
 
         double droneX = canvas.getWidth() / 2;
         double droneY = canvas.getHeight() / 2;
@@ -65,7 +61,8 @@ public class Controller {
         if(drone.isActive()) {
             System.out.println("Draw Drone");
 
-            drone.draw(graphicsContext);
+            drone.draw(getGraphicsContext());
+
         }
     }
 
@@ -114,5 +111,13 @@ public class Controller {
             draw();
         }
 
+    }
+
+    public GraphicsContext getGraphicsContext() {
+        return graphicsContext;
+    }
+
+    public void setGraphicsContext(GraphicsContext graphicsContext) {
+        this.graphicsContext = graphicsContext;
     }
 }

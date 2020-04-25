@@ -1,9 +1,15 @@
 package sample;
 
+import javafx.scene.canvas.Canvas;
+import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
+import javax.swing.text.html.ImageView;
+import java.awt.*;
 import java.io.IOException;
 import java.net.*;
+import javafx.scene.image.Image;
+
 
 
 
@@ -15,9 +21,12 @@ public class UdpReciever implements Runnable {
 
     private DatagramSocket socket;
 
+    double canvasHeight = 327.0;
+    double canvasWidth = 372.0;
 
     public void messageHandler(String message) {
 
+        //System.out.println(drone);
 
         if(message.equals("BLACK")) {
             if(drone.isActive()) {
@@ -92,6 +101,9 @@ public class UdpReciever implements Runnable {
         if(message.equals("moveup")) {
             if(drone.isActive()) {
                 drone.setY(drone.getY() - 0.25);
+                if(drone.getY() < 0) {
+                    drone.setY(0);
+                }
                 controller.draw();
             }
         }
@@ -99,6 +111,9 @@ public class UdpReciever implements Runnable {
         if(message.equals("movedown")) {
             if(drone.isActive()) {
                 drone.setY(drone.getY() + 0.25);
+                if(drone.getY() > canvasHeight - drone.getHeight()) {
+                    drone.setY(canvasHeight - drone.getHeight());
+                }
                 controller.draw();
             }
         }
@@ -106,6 +121,9 @@ public class UdpReciever implements Runnable {
         if(message.equals("moveright")) {
             if(drone.isActive()) {
                 drone.setX(drone.getX() + 0.25);
+                if(drone.getX() > canvasWidth - drone.getWidth()) {
+                    drone.setX(canvasWidth - drone.getWidth());
+                }
                 controller.draw();
             }
         }
@@ -113,6 +131,9 @@ public class UdpReciever implements Runnable {
         if(message.equals("moveleft")) {
             if(drone.isActive()) {
                 drone.setX(drone.getX() - 0.25);
+                if(drone.getX() < 0) {
+                    drone.setX(0);
+                }
                 controller.draw();
             }
         }
@@ -159,6 +180,7 @@ public class UdpReciever implements Runnable {
                 // gemmer det vi har revievet i ny string
                 String s = new String(datagramPacket.getData(), 0, datagramPacket.getLength());
 
+                drone.setIP(datagramPacket.getAddress().getHostAddress());
                 messageHandler(s);
 
                 // printer gemt string

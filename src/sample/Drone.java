@@ -11,9 +11,10 @@ public class Drone {
     int b;
     Color color = Color.BLACK;
 
-    int length = 20;
-    int width = 20;
+    private int height = 20;
+    private int width = 20;
     private boolean active = false;
+    private String IP;
 
 
     public Drone(double x, double y) {
@@ -52,12 +53,19 @@ public class Drone {
     }
 
 
-
     @Override
     public String toString() {
         return "Drone{" +
                 "x=" + x +
                 ", y=" + y +
+                ", r=" + r +
+                ", g=" + g +
+                ", b=" + b +
+                ", color=" + color +
+                ", height=" + getHeight() +
+                ", width=" + getWidth() +
+                ", active=" + active +
+                ", IP='" + IP + '\'' +
                 '}';
     }
 
@@ -69,4 +77,27 @@ public class Drone {
         this.active = active;
     }
 
+    public String getIP() {
+        return IP;
+    }
+
+    public void setIP(String IP) {
+        this.IP = IP;
+    }
+
+    public int getHeight() {
+        return height;
+    }
+
+    public void setHeight(int height) {
+        this.height = height;
+    }
+
+    public int getWidth() {
+        return width;
+    }
+
+    public void setWidth(int width) {
+        this.width = width;
+    }
 }

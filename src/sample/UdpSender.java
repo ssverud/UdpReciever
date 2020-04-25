@@ -9,6 +9,11 @@ import java.net.InetAddress;
 public class UdpSender {
 
     private DatagramSocket socket;
+    private Drone drone;
+
+    public UdpSender(Drone drone) {
+        this.drone = drone;
+    }
 
     public void sendUdp(Message message) throws UnknownHostException {
 
@@ -19,7 +24,7 @@ public class UdpSender {
                 e.printStackTrace();
             }
 
-            InetAddress ip = InetAddress.getLocalHost();
+            InetAddress ip = InetAddress.getByName(drone.getIP());
             byte data[];
 
 
