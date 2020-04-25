@@ -1,6 +1,7 @@
 package sample;
 
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 
 public class Drone {
@@ -15,6 +16,8 @@ public class Drone {
     private int width = 20;
     private boolean active = false;
     private String IP;
+
+    private Image image = new Image("apple.png");
 
 
     public Drone(double x, double y) {
@@ -31,8 +34,8 @@ public class Drone {
     public void draw(GraphicsContext graphicsContext) {
 
 
-        graphicsContext.setFill(color);
-        graphicsContext.fillRect(x-2, y-2, 20, 20);
+       // graphicsContext.setFill(color);
+        graphicsContext.drawImage(image, getX(), getY(), getWidth(),getHeight());
     }
 
     public double getX() {
@@ -98,5 +101,13 @@ public class Drone {
 
     public void setWidth(int width) {
         this.width = width;
+    }
+
+    public Image getImage() {
+        return image;
+    }
+
+    public void setImage(Image image) {
+        this.image = image;
     }
 }
