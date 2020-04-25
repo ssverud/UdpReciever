@@ -7,10 +7,11 @@ import java.util.Random;
 public class Apple {
     private Random random = new Random();
 
-   private int Width = 30;
+    private int Width = 30;
     private int Height = 30;
     private int canvasWidth = 372;
     private int canvasHeight = 327;
+    private boolean active = false;
 
     private double x = getRandom().nextInt(getCanvasWidth() - getWidth());
     private double y = getRandom().nextInt(getCanvasHeight() - getHeight());
@@ -83,6 +84,14 @@ public class Apple {
 
     public void setImage(Image image) {
         this.image = image;
+    }
+
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
     }
 
 

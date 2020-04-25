@@ -54,19 +54,22 @@ public class Controller {
         if (drone.isActive()) {
             System.out.println("Draw Drone");
             drone.draw(getGraphicsContext());
-            Apple apple = new Apple();
-            graphicsContext.drawImage(apple.getImage(), apple.getX(),apple.getY(), apple.getWidth(), apple.getHeight());
-            // if (calculateDistanceBetweenDroneAndApple(drone.getX(), drone.getY(), )
+            drawApple();
 
         }
     }
 
     // delete if no use:  calculateDistanceBetweenDroneAndApple(drone.getX(),drone.getY(),)
     public void drawApple() {
+
         if (apples.size() < 1) {
            Apple apple = new Apple();
+
             apples.add(apple);
-            graphicsContext.drawImage(apple.getImage(), apple.getX(), apple.getY(), apple.getWidth(), apple.getHeight());
+            graphicsContext.drawImage(apple.getImage(), apples.get(1).getX(), apples.get(1).getY(), apples.get(1).getWidth(), apples.get(1).getHeight());
+             if (calculateDistanceBetweenDroneAndApple(drone.getX(), drone.getY(), apple.getX(),apple.getY()) < 50) {
+                 apples.remove(1);
+             }
         }
     }
 
