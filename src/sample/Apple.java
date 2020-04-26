@@ -19,7 +19,6 @@ public class Apple {
     private Image image = new Image("apple.png");
 
     public Apple() {
-
     }
 
     public Random getRandom() {

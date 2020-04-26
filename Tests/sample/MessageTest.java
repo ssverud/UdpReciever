@@ -11,7 +11,6 @@ class MessageTest {
 
     @Test
     void getMessage() {
-
         String testString = message.getMessage();
         assertEquals(testString, message.getMessage());
         assertNotEquals(testString2, message.getMessage());
@@ -19,7 +18,6 @@ class MessageTest {
 
     @Test
     void setMessage() {
-
         assertNotEquals(testString2, message.getMessage());
         message.setMessage("hej Ebbe");
         assertEquals(testString2, message.getMessage());

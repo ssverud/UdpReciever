@@ -16,9 +16,6 @@ import java.net.UnknownHostException;
 
 public class Controller {
 
-
-    // måske slet test, hvis ikke problem bare slet  Controller controller;
-
     Drone drone = new Drone(50, 40);
     UdpSender udpSender = new UdpSender(drone);
 
@@ -26,7 +23,6 @@ public class Controller {
 
     ObservableList<Message> messages = FXCollections.observableArrayList();
     ObservableList<Apple> apples = FXCollections.observableArrayList();
-
 
     public void initialize() {
         setGraphicsContext(canvas.getGraphicsContext2D());
@@ -48,32 +44,27 @@ public class Controller {
     public void draw() {
         getGraphicsContext().clearRect(0, 0, 500, 500);
 
-        // test if irrelevant, delete if no problems - double droneX = canvas.getWidth() / 2;
-        // test if irrelevant, delete if no problems - double droneY = canvas.getHeight() / 2;
-
         if (drone.isActive()) {
             System.out.println("Draw Drone");
             drawApple();
-            }
-            drone.draw(getGraphicsContext());
-
+        }
+        drone.draw(getGraphicsContext());
     }
 
-    // delete if no use:  calculateDistanceBetweenDroneAndApple(drone.getX(),drone.getY(),)
     public void drawApple() {
         Apple apple;
-        if(apples.size() < 1) {
+        if (apples.size() < 1) {
             apple = new Apple();
             apple.setActive(true);
             apples.add(apple);
         }
-        System.out.println("Apple added ???????????????????????????????????????????????????????????");
 
+        // System.out.println("Apple added ???????????????????????????????????????????????????????????");
         getGraphicsContext().drawImage(apples.get(0).getImage(), apples.get(0).getX(), apples.get(0).getY(), apples.get(0).getWidth(), apples.get(0).getHeight());
-        System.out.println("Apple ------------------------------------------------------------------");
+        // System.out.println("Apple ------------------------------------------------------------------");
         if (calculateDistanceBetweenDroneAndApple(drone.getX(), drone.getY(), apples.get(0).getX(), apples.get(0).getY()) < 50) {
             apples.remove(0);
-            System.out.println("apple removed!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+            // System.out.println("apple removed!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
         }
     }
 
@@ -98,36 +89,16 @@ public class Controller {
     @FXML
     void oneButton(ActionEvent event) throws UnknownHostException {
         Message message = new Message(textFieldMessage.getText());
-        // tableView.getItems().add(message);
         messages.add(message);
         System.out.println(message);
         udpSender.sendUdp(message);
     }
 
     @FXML
-    public void twoButton(ActionEvent event) {
-
-        draw();
-
-    }
-
-    @FXML
-    public void threeButton(ActionEvent event) {
-
-    }
-
-    @FXML
-    public void fourBotton(ActionEvent event) {
-
-    }
-
-    @FXML
     void mouseClickedOnCanvas(MouseEvent event) {
         if (event.getButton() == MouseButton.PRIMARY) {
-
             draw();
         }
-
     }
 
     public GraphicsContext getGraphicsContext() {
