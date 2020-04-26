@@ -18,10 +18,7 @@
     <bottom>
         <ButtonBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
             <buttons>
-                <Button mnemonicParsing="false" onAction="#oneButton" text="Send message" />
-                <Button mnemonicParsing="false" onAction="#twoButton" text="Start" />
-                <Button mnemonicParsing="false" onAction="#threeButton" text="three" />
-                <Button mnemonicParsing="false" onAction="#fourBotton" text="four" />
+                <Button alignment="CENTER" mnemonicParsing="false" onAction="#oneButton" prefHeight="27.0" prefWidth="616.0" text="Send message" />
             </buttons>
         </ButtonBar>
     </bottom>

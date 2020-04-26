@@ -10,7 +10,7 @@ public class Drone {
     int r;
     int g;
     int b;
-    Color color = Color.BLACK;
+    Color color;
 
     private int height = 60;
     private int width = 60;
@@ -32,6 +32,8 @@ public class Drone {
 
     // drawing of drone on canvas
     public void draw(GraphicsContext graphicsContext) {
+        graphicsContext.setFill(color);
+        graphicsContext.fillRect(getX() - 5 , getY() - 5 , getWidth() + 10, getHeight() + 10);
         graphicsContext.drawImage(image, getX(), getY(), getWidth(), getHeight());
     }
 
