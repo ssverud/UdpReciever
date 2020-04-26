@@ -9,20 +9,26 @@ public class UdpSender {
     private DatagramSocket socket;
     private Drone drone;
 
+    // constructor
     public UdpSender(Drone drone) {
         this.drone = drone;
     }
 
+    // method to send an UDP
     public void sendUdp(Message message) {
 
         try {
+            //prepares socket
             try {
                 socket = new DatagramSocket();
             } catch (SocketException e) {
                 e.printStackTrace();
             }
 
+            // picks up the drone IP
             InetAddress ip = InetAddress.getByName(drone.getIP());
+
+            // prepares array for data
             byte data[];
 
             // change the string into bytes

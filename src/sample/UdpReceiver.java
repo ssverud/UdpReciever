@@ -5,7 +5,7 @@ import javafx.scene.paint.Color;
 import java.io.IOException;
 import java.net.*;
 
-public class UdpReciever implements Runnable {
+public class UdpReceiver implements Runnable {
 
     private Drone drone;
     private Controller controller;
@@ -13,6 +13,7 @@ public class UdpReciever implements Runnable {
     double canvasHeight = 327.0;
     double canvasWidth = 372.0;
 
+    // Takes the String generated from the UDP
     public void messageHandler(String message) {
 
         if (message.equals("BLACK")) {
@@ -132,14 +133,14 @@ public class UdpReciever implements Runnable {
         }
     }
 
-    // kommer af implement Runnable
+    // comes from implement Runnable
     @Override
     public void run() {
 
         // setup socket
         int port = 7000;
 
-        // forbereder en socket til modtagelse af besked
+        // Prepare a socket to receive a message
         try {
             socket = new DatagramSocket(port);
         } catch (SocketException e) {
@@ -147,21 +148,23 @@ public class UdpReciever implements Runnable {
         }
 
         while (true) {
-            // forberede byte
-            // Laver byte array til besked
+            // Prepare bytes
+            // Making a byte array for the UDP
             byte[] bytes = new byte[255];
 
-            // laver datagramPacket med længden byte på byte
+            // Making a datagramPacket with bytes and the length of bytes
             DatagramPacket datagramPacket = new DatagramPacket(bytes, bytes.length);
 
-            // reciever packet
+            // receives packet
             try {
                 socket.receive(datagramPacket);
 
-                // gemmer det vi har revievet i ny string
+                // saves the data from packet in a s
                 String s = new String(datagramPacket.getData(), 0, datagramPacket.getLength());
 
                 drone.setIP(datagramPacket.getAddress().getHostAddress());
+
+                // puts s into messageHandler
                 messageHandler(s);
 
             } catch (IOException e) {

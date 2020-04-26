@@ -35,7 +35,7 @@ public class Controller {
         tableView.setItems(messages);
         System.out.println(messages);
 
-        UdpReciever udpReciever = new UdpReciever();
+        UdpReceiver udpReciever = new UdpReceiver();
 
         udpReciever.setDrone(drone);
 
