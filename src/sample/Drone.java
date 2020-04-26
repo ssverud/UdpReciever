@@ -12,8 +12,8 @@ public class Drone {
     int b;
     Color color = Color.BLACK;
 
-    private int height = 20;
-    private int width = 20;
+    private int height = 60;
+    private int width = 60;
     private boolean active = false;
     private String IP;
 
