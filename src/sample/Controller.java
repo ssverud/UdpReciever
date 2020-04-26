@@ -32,7 +32,7 @@ public class Controller {
         tableView.setItems(messages);
         System.out.println(messages);
 
-        UdpReciever udpReciever = new UdpReciever();
+        UdpReceiver udpReciever = new UdpReceiver();
 
         udpReciever.setDrone(drone);
 
@@ -87,7 +87,7 @@ public class Controller {
     private TextField textFieldMessage;
 
     @FXML
-    void oneButton(ActionEvent event) throws UnknownHostException {
+    void oneButton(ActionEvent event) {
         Message message = new Message(textFieldMessage.getText());
         messages.add(message);
         System.out.println(message);
