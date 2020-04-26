@@ -13,7 +13,7 @@ public class UdpSender {
         this.drone = drone;
     }
 
-    public void sendUdp(Message message) throws UnknownHostException {
+    public void sendUdp(Message message) {
 
         try {
             try {

@@ -13,6 +13,7 @@ public class Apple {
     private int canvasHeight = 327;
     private boolean active = false;
 
+    //skaber en random værdi i drone movement boarded (canvas) hvor apple dukker op
     private double x = getRandom().nextInt(getCanvasWidth() - getWidth());
     private double y = getRandom().nextInt(getCanvasHeight() - getHeight());
 
@@ -21,6 +22,7 @@ public class Apple {
     public Apple() {
     }
 
+    // getter og setter
     public Random getRandom() {
         return random;
     }

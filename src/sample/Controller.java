@@ -16,14 +16,17 @@ import java.net.UnknownHostException;
 
 public class Controller {
 
+    //skab drone og send videre til udp
     Drone drone = new Drone(50, 40);
     UdpSender udpSender = new UdpSender(drone);
 
     private GraphicsContext graphicsContext;
 
+    //liste for forsendelse af meddelser fra fx til lcd
     ObservableList<Message> messages = FXCollections.observableArrayList();
     ObservableList<Apple> apples = FXCollections.observableArrayList();
 
+    //ved ikke
     public void initialize() {
         setGraphicsContext(canvas.getGraphicsContext2D());
 
@@ -40,7 +43,7 @@ public class Controller {
 
         new Thread(udpReciever).start();
     }
-
+    //sletter tidligere board for drone bevægelse og tegner opdateret igen
     public void draw() {
         getGraphicsContext().clearRect(0, 0, 500, 500);
 
@@ -51,6 +54,7 @@ public class Controller {
         drone.draw(getGraphicsContext());
     }
 
+    //laver og sætter apple i vores ovenstående liste, tegner det ved at hente .png og derefter sletter sig selv fra apple listen
     public void drawApple() {
         Apple apple;
         if (apples.size() < 1) {
@@ -67,7 +71,7 @@ public class Controller {
             // System.out.println("apple removed!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
         }
     }
-
+    //kalkulerer distancen mellem drone og apple for at kunne flytte apple til ny lokation
     public double calculateDistanceBetweenDroneAndApple(double x1, double y1, double x2, double y2) {
         double ac = Math.abs(y2 - y1);
         double cb = Math.abs(x2 - x1);
@@ -87,7 +91,7 @@ public class Controller {
     private TextField textFieldMessage;
 
     @FXML
-    void oneButton(ActionEvent event) throws UnknownHostException {
+    void oneButton(ActionEvent event) {
         Message message = new Message(textFieldMessage.getText());
         messages.add(message);
         System.out.println(message);
@@ -101,6 +105,7 @@ public class Controller {
         }
     }
 
+    //getter og setter
     public GraphicsContext getGraphicsContext() {
         return graphicsContext;
     }
