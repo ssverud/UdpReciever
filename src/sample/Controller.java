@@ -11,29 +11,25 @@ import javafx.scene.layout.VBox;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 
-import java.net.UnknownHostException;
-
-
 public class Controller {
 
-    //skab drone og send videre til udp
+    //creates drone and sends it to udp
     Drone drone = new Drone(50, 40);
     UdpSender udpSender = new UdpSender(drone);
 
     private GraphicsContext graphicsContext;
 
-    //liste for forsendelse af meddelser fra fx til lcd
+    //list for sending messages from javafx to lcd and apple container
     ObservableList<Message> messages = FXCollections.observableArrayList();
     ObservableList<Apple> apples = FXCollections.observableArrayList();
 
-    //ved ikke
+    //initializing
     public void initialize() {
         setGraphicsContext(canvas.getGraphicsContext2D());
 
-        System.out.println("Kører");
-
+        //System.out.println("Kører");
         tableView.setItems(messages);
-        System.out.println(messages);
+        //System.out.println(messages);
 
         UdpReceiver udpReciever = new UdpReceiver();
 
@@ -43,7 +39,7 @@ public class Controller {
 
         new Thread(udpReciever).start();
     }
-    //sletter tidligere board for drone bevægelse og tegner opdateret igen
+    //clearing previous board of drone and apple and draws again
     public void draw() {
         getGraphicsContext().clearRect(0, 0, 500, 500);
 
@@ -54,7 +50,7 @@ public class Controller {
         drone.draw(getGraphicsContext());
     }
 
-    //laver og sætter apple i vores ovenstående liste, tegner det ved at hente .png og derefter sletter sig selv fra apple listen
+    //adding and removing apple for our above mentioned list
     public void drawApple() {
         Apple apple;
         if (apples.size() < 1) {
@@ -71,7 +67,7 @@ public class Controller {
             // System.out.println("apple removed!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
         }
     }
-    //kalkulerer distancen mellem drone og apple for at kunne flytte apple til ny lokation
+    //calculating distance between drone and apple to relocate apple
     public double calculateDistanceBetweenDroneAndApple(double x1, double y1, double x2, double y2) {
         double ac = Math.abs(y2 - y1);
         double cb = Math.abs(x2 - x1);

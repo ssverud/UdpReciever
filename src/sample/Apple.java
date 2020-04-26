@@ -13,7 +13,7 @@ public class Apple {
     private int canvasHeight = 327;
     private boolean active = false;
 
-    //skaber en random værdi i drone movement boarded (canvas) hvor apple dukker op
+    //creates a random value on the canvas for where the apple to appear
     private double x = getRandom().nextInt(getCanvasWidth() - getWidth());
     private double y = getRandom().nextInt(getCanvasHeight() - getHeight());
 
